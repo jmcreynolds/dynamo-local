@@ -1,0 +1,16 @@
+{
+  "name": "dynamo-local",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "dynamoose": "^2.8.5",
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "serverless-bundle": "^5.4.0",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^9.0.0"
+  }
+}
