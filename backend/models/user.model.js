@@ -14,6 +14,12 @@ const schema = new dynamoose.Schema(
       type: String,
       hashKey: true,
     },
+    alerts: {
+      type: Number,
+      index: {
+        global: true
+      }
+    },
     name: String,
   },
   {

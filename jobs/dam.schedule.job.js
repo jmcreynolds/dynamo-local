@@ -1,3 +1,7 @@
+exports.handler = function(event, context, callback) {
+    damSchedule
+}
+
 const axios = require('axios'); 
 const fs = require('fs');
 const lineReader = require('line-reader');
@@ -60,4 +64,3 @@ const damSchedule = Object.entries(schedule[today].run).forEach(entry => {
     getDamData(dam_url, file, parseFile);
 });
 
-exports.handler = damSchedule;

@@ -35,7 +35,7 @@ functions:
   dam_schedule:
     handler: jobs/dam.schedule.job.handler
     events:
-      - schedule: rate(1 minute)
+      - schedule: rate(1 day)
 
 resources:
   Resources:
