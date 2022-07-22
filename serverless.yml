@@ -32,6 +32,11 @@ functions:
       # - http: 'ANY {proxy+}'
       - httpApi: '*'
 
+  dam_schedule:
+    handler: jobs/dam.schedule.job.handler
+    events:
+      - schedule: rate(1 minute)
+
 resources:
   Resources:
     UsersTable:
