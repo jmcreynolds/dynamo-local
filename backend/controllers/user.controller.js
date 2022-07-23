@@ -59,7 +59,7 @@ exports.userDelete = async (req, res, next) => {
 
 exports.userCreate = async (req, res, next) => {
 
-    const { name } = req.body;
+    const { name, validated } = req.body;
 
     if (typeof name !== "string") {
       res.status(400).json({ error: '"name" must be a string' });
@@ -68,7 +68,8 @@ exports.userCreate = async (req, res, next) => {
     const insert = {
         userId: uuidv4(),
         name: name,
-        alerts: 1
+        alerts: 1,
+        validated: validated
     }
 
     try {

@@ -1,12 +1,10 @@
 const dynamoose = require('dynamoose');
 
-const table_name = process.env.USERS_TABLE;
-
-
-
 if (process.env.IS_OFFLINE) {
-    dynamoose.aws.ddb.local();   
+  dynamoose.aws.ddb.local();   
 }
+
+const table_name = process.env.USERS_TABLE;
 
 const schema = new dynamoose.Schema(
   {
@@ -20,7 +18,14 @@ const schema = new dynamoose.Schema(
         global: true
       }
     },
+    validated: {
+      type: Number,
+      index: {
+        global: true
+      }
+    },
     name: String,
+    validated: Number,
   },
   {
     timestamps: true,
