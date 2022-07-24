@@ -22,7 +22,8 @@ provider:
           Resource:
             - Fn::GetAtt: [ UsersTable, Arn ]
   environment:
-    USERS_TABLE: ${self:custom.tableName}
+    USERS_TABLE: ${self:custom.userTableName}
+    DAM_DATA_TABLE: ${self:custom.damTableName}
 
 functions:
   api:
@@ -49,11 +50,12 @@ resources:
           - AttributeName: userId
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
-        TableName: ${self:custom.tableName}
+        TableName: ${self:custom.userTableName}
 
 
 custom:
-  tableName: 'users-table-${sls:stage}'
+  userTableName: 'users-table-${sls:stage}'
+  damTableName: 'dam-data-${sls:stage}'
   dynamodb:
     stages: local
     start:

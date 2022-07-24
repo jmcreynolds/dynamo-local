@@ -4,7 +4,7 @@ if (process.env.IS_OFFLINE) {
   dynamoose.aws.ddb.local();   
 }
 
-const table_name = process.env.USERS_TABLE;
+const table_name = process.env.DAM_DATA_TABLE;
 
 const schema = new dynamoose.Schema(
   {
@@ -12,12 +12,16 @@ const schema = new dynamoose.Schema(
       type: String,
       hashKey: true,
     },
+    alerts: {
+      type: Number,
+      index: {
+        global: true
+      }
+    },
     validated: {
       type: Number,
       index: {
-        global: true,
-        rangeKey: 'userId',
-        name: 'validateIndex',
+        global: true
       }
     },
     name: String,
