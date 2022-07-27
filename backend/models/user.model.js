@@ -21,7 +21,7 @@ const schema = new dynamoose.Schema(
       }
     },
     name: String,
-    validated: Number,
+    alerts: Number,
   },
   {
     timestamps: true,
