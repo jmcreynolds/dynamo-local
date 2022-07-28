@@ -16,7 +16,13 @@ const schema = new dynamoose.Schema(
       hashKey: true,
     },
     symbol: String,
-    reading_date: String,
+    reading_date: {
+      "type": String,
+      "index": {
+        "name": "readingDateIndex",
+        "global": true
+      }
+    },
     open: Number,
     high: Number,
     low: Number, 

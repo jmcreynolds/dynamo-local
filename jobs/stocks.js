@@ -11,13 +11,9 @@ async function main()  {
 	const startDate = new Date('06/21/2022');
 	const endDate = new Date('08/26/2022');
 	const results = await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d');
-
 	Object.entries(results.response).forEach(entry => {
 		entry.forEach(stockInsert);
 	})
-
-	
-
 }
 
 main();
