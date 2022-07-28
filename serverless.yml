@@ -24,6 +24,7 @@ provider:
   environment:
     USERS_TABLE: ${self:custom.userTableName}
     DAM_DATA_TABLE: ${self:custom.damTableName}
+    STOCK_TABLE: ${self:custom.stockTableName}
 
 functions:
   api:
@@ -35,6 +36,11 @@ functions:
 
   dam_schedule:
     handler: jobs/dam.schedule.job.handler
+    events:
+      - schedule: rate(1 day)
+
+  stock_pull:
+    handler: jobs/stocks.handler
     events:
       - schedule: rate(1 day)
 
@@ -52,10 +58,23 @@ resources:
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.userTableName}
 
+    StockTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.stockTableName}
+
 
 custom:
   userTableName: 'users-table-${sls:stage}'
   damTableName: 'dam-data-${sls:stage}'
+  stockTableName: 'stock-table-${sls:stage}'
   dynamodb:
     stages: local
     start:
