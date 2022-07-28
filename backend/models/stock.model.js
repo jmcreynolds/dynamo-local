@@ -6,8 +6,6 @@ if (process.env.IS_OFFLINE || process.env.IS_LOCAL) {
 }
 
 const table_name = process.env.STOCK_TABLE;
-console.log("Table Name:", table_name)
-console.log("ENV:", process.env)
 
 const schema = new dynamoose.Schema(
   {
@@ -17,10 +15,12 @@ const schema = new dynamoose.Schema(
     },
     symbol: String,
     reading_date: {
-      "type": String,
+      "type": Date,
+      "required": true,
+      "rangeKey": true,
       "index": {
         "name": "readingDateIndex",
-        "global": true
+        "global": true,
       }
     },
     open: Number,

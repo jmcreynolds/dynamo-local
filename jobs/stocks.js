@@ -22,12 +22,12 @@ stockInsert = async (item) => {
 
 	if (typeof item === 'object'){
 		let date = new Date(item.date * 1000);
-		console.log(date);
+		console.log(date.toString());
 
 		const insert = {
 			id: uuidv4(),
 			symbol: 'AAPL',
-			reading_date: String(item.date),
+			reading_date: date,
 			open: item.open,
 			high: item.high,
 			low: item.low,
