@@ -27,7 +27,7 @@ stockInsert = async (item) => {
 		const insert = {
 			id: uuidv4(),
 			symbol: 'AAPL',
-			reading_date: date,
+			reading_date: date.toISOString(),
 			open: item.open,
 			high: item.high,
 			low: item.low,

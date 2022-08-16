@@ -13,15 +13,23 @@ const schema = new dynamoose.Schema(
       type: String,
       hashKey: true,
     },
-    symbol: String,
-    reading_date: {
-      "type": Date,
-      "required": true,
-      "rangeKey": true,
+    symbol: {
+      "type": String,
       "index": {
-        "name": "readingDateIndex",
+        "name": "symbolDateIndex",
+        "rangeKey": "reading_date",
         "global": true,
       }
+    },
+    reading_date: {
+      "type": String,
+      "required": true,
+      "rangeKey": true,
+      // "index": {
+      //   "name": "readingDateIndex",
+      //   "rangeKey": "email",
+      //   "global": true,
+      // }
     },
     open: Number,
     high: Number,
